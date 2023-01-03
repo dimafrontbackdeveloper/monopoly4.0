@@ -1,0 +1,1072 @@
+@import './mixins';
+@import './variables';
+
+body {
+   background-image: url('./../images/registration-bg.png');
+   background-repeat: no-repeat;
+   background-size: cover;
+   // height: 100vh;
+   min-height: 100vh;
+   // overflow: hidden;
+
+   font-family: 'Roboto', sans-serif;
+   color: #fff;
+
+   &::-webkit-scrollbar {
+      width: 10px;
+
+      @include breakpoint(768px) {
+        width: 5px;
+      }
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #043c60;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #1ddcfc;
+      border-radius: 0px 10px 0px 0px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #a1f1ff;
+    }
+}
+
+.button {
+   cursor: pointer;
+}
+
+.popup {
+   opacity: 0;
+   z-index: -1;
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: rgba(0, 0, 0, 0.7);
+   transition: none;
+
+   &--active {
+      opacity: 1;
+      z-index: 2;
+      transition: opacity 0.5s;
+   }
+
+   h2 {
+      @include adaptiv-value('font-size', 76, 36, 0);
+      font-weight: 700;
+      text-align: center;
+      text-transform: uppercase;
+   }
+}
+
+.close-popup {
+   background-image: url('./../images/X-Button-Normal.png');
+   background-repeat: no-repeat;
+   background-size: 100% 100%;
+   transition: 0.2s;
+   cursor: pointer;
+
+   &:hover {
+      background-image: url('./../images/X-Button-Hovered.png');
+   }
+}
+
+.online {
+   font-size: 32px;
+
+   @include breakpoint(425px) {
+      font-size: 18px;
+   }
+
+   &::before {
+      content: '';
+      display: block;
+      width: 15px;
+      height: 15px;
+      border-radius: 15px;
+      background: #3BED4C;
+      margin-right: 15px;
+
+      @include breakpoint(425px) {
+         margin-right: 5px;
+         width: 10px;
+         height: 10px;
+      }
+   }
+
+   b {
+      font-weight: bold;
+   }
+}
+
+.dn {
+   display: none;
+}
+
+.title {
+   @include adaptiv-value('font-size', 52, 36, 0);
+   text-align: center;
+   text-transform: uppercase;
+}
+
+.link {
+   color: #4774F9 !important;
+   text-decoration: underline;
+   transition: 0.2s;
+
+   &:hover {
+      color: #7396fd;
+   }
+}
+
+#unity-container {
+   position: relative;
+   width: 100% !important;
+   height: 100% !important;
+
+   canvas {
+      width: 100% !important;
+      height: 100% !important;
+   }
+}
+
+// #unity-container.unity-desktop {
+//    left: 50%;
+//    top: 50%;
+//    transform: translate(-50%, -50%)
+// }
+
+// #unity-container.unity-mobile {
+//    width: 100%;
+//    height: 100%
+// }
+
+// #unity-canvas {
+//    background: #1F1F20
+// }
+
+// .unity-mobile #unity-canvas {
+//    width: 100%;
+//    height: 100%
+// }
+
+#unity-loading-bar {
+   position: absolute;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%, -50%);
+}
+
+// #unity-logo {
+//    width: 154px;
+//    height: 130px;
+//    background: url('./../images/unity-logo-dark.png') no-repeat center
+// }
+
+#unity-progress-bar-empty {
+   width: 141px;
+   height: 18px;
+   margin-top: 10px;
+   margin-left: 6.5px;
+   background: url('./../images/progress-bar-empty-dark.png') no-repeat center
+}
+
+#unity-progress-bar-full {
+   width: 0%;
+   height: 18px;
+   margin-top: 10px;
+   background: url('./../images/progress-bar-full-dark.png') no-repeat center
+}
+
+#unity-footer {
+   position: relative
+}
+
+.unity-mobile #unity-footer {
+   display: none
+}
+
+// #unity-webgl-logo {
+//    float: left;
+//    width: 204px;
+//    height: 38px;
+//    background: url('./../images/webgl-logo.png') no-repeat center
+// }
+
+// #unity-build-title {
+//    float: right;
+//    margin-right: 10px;
+//    line-height: 38px;
+//    font-family: arial;
+//    font-size: 18px
+// }
+
+#unity-fullscreen-button {
+   float: right;
+   width: 38px;
+   height: 38px;
+   background: url('./../images/fullscreen-button.png') no-repeat center
+}
+
+#unity-warning {
+   position: absolute;
+   left: 50%;
+   top: 5%;
+   transform: translate(-50%);
+   background: white;
+   padding: 10px;
+   display: none
+}
+
+
+.logo {
+   @include adaptiv-value('width', 110, 55, 0);
+}
+
+.burger {
+   position: relative;
+   @include adaptiv-value('width', 50, 30, 0);
+   @include adaptiv-value('height', 35, 25, 0);
+
+   span {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      @include adaptiv-value('height', 5, 3, 0);
+      background: #fff;
+      border-radius: 10px;
+
+      &:nth-child(1) {
+         top: 0;
+      }
+
+      &:nth-child(2) {
+         top: 50%;
+         transform: translateY(-50%);
+      }
+
+      &:nth-child(3) {
+         bottom: 0;
+      }
+   }
+}
+
+.d-f {
+   display: flex;
+}
+
+.d-g {
+   display: grid;
+}
+
+.jc-sb {
+   justify-content: space-between;
+}
+
+.jc-c {
+   justify-content: center;
+}
+
+.ai-c {
+   align-items: center;
+}
+
+.fd-c {
+   flex-direction: column;
+}
+
+.fw-w {
+   flex-wrap: wrap;
+}
+
+
+.ta-c {
+   text-align: center;
+}
+
+.ta-e {
+   text-align: end;
+}
+
+.gtc-2 {
+   grid-template-columns: repeat(2, 1fr);
+
+   @include breakpoint(768px) {
+      grid-template-columns: 1fr;
+   }
+}
+
+.gtc-3 {
+   grid-template-columns: repeat(3, 1fr);
+
+   @include breakpoint(768px) {
+      grid-template-columns: 1fr;
+   }
+}
+
+.gtc-4 {
+   grid-template-columns: repeat(4, 1fr);
+
+   @include breakpoint(768px) {
+      grid-template-columns: repeat(2, 1fr);
+   }
+
+   @include breakpoint(425px) {
+      grid-template-columns: 1fr;
+   }
+}
+
+.section{
+   width: 100%;
+   height: 100%;
+
+   @include breakpoint(768px){
+      padding-bottom: 150px;
+   }
+}
+
+
+.deposit-funds-popup {
+   // .deposit-funds-popup-container
+
+   &__container {
+      position: relative;
+      border: 5px solid #4774FF;
+      border-radius: 5px;
+      background: #fff;
+      @include adaptiv-value('padding-top', 30, 15, 0);
+      @include adaptiv-value('padding-right', 50, 15, 0);
+      @include adaptiv-value('padding-bottom', 50, 40, 0);
+      @include adaptiv-value('padding-left', 50, 15, 0);
+
+      text-align: center;
+      color: #000;
+
+      h3 {
+         @include adaptiv-value('font-size', 46, 32, 0);
+         color: #4774FF;
+         @include adaptiv-value('margin-bottom', 20, 10, 0);
+         font-weight: 700;
+      }
+
+      input {
+         display: block;
+         border: none;
+         outline: none !important;
+         @include adaptiv-value('height', 40, 30, 0);
+         background: #4774FF;
+         @include adaptiv-value('padding-top', 30, 10, 0);
+         @include adaptiv-value('padding-right', 10, 5, 0);
+         @include adaptiv-value('padding-bottom', 30, 10, 0);
+         @include adaptiv-value('padding-left', 10, 5, 0);
+         @include adaptiv-value('margin-bottom', 20, 10, 0);
+         text-align: center;
+         font-family: 'Roboto', sans-serif;
+         @include adaptiv-value('font-size', 36, 18, 0);
+         color: #fff;
+
+         &::placeholder {
+            color: #A7BAFF;
+         }
+      }
+
+      .close-popup {
+         position: absolute;
+         top: 0;
+         right: 0;
+         transform: translateX(150%);
+         @include adaptiv-value('width', 35, 35, 0);
+         @include adaptiv-value('height', 35, 35, 0);
+
+         @include breakpoint(768px) {
+            transform: translate(0, -150%);
+
+         }
+      }
+
+      button {
+         position: absolute;
+         bottom: 0;
+         left: 50%;
+         transform: translate(-50%, 50%);
+         display: block;
+         border: none;
+         background: none;
+         width: 70%;
+         @include adaptiv-value('height', 80, 45, 0);
+         background-image: url('./../images/Deposit-Normal.png');
+         background-repeat: no-repeat;
+         background-size: 100% 100%;
+         transition: 0.2s;
+         cursor: pointer;
+
+         &:hover {
+            background-image: url('./../images/Deposit-Hovered.png');
+         }
+      }
+   }
+
+   // .deposit-funds-popup-amount
+
+   &__amount {
+      @include adaptiv-value('font-size', 26, 20, 0);
+      @include adaptiv-value('margin-bottom', 15, 10, 0);
+   }
+
+   // .deposit-funds-popup-total-price
+
+   &__total-price {
+      span {
+         font-weight: bold;
+         @include adaptiv-value('font-size', 26, 18, 0);
+
+         &:first-child {
+            margin-right: 10px;
+         }
+      }
+   }
+
+   // .deposit-funds-popup-price-usd
+
+   &__price-usd {
+      @include adaptiv-value('font-size', 22, 16, 0);
+      text-align: end;
+   }
+}
+
+
+.approve-deposit-popup {
+   // .approve-deposit-popup-container
+
+   &__container {
+      position: relative;
+      border: 5px solid #4774FF;
+      border-radius: 5px;
+      background: #fff;
+      @include adaptiv-value('padding-top', 30, 15, 0);
+      @include adaptiv-value('padding-right', 50, 15, 0);
+      @include adaptiv-value('padding-bottom', 50, 40, 0);
+      @include adaptiv-value('padding-left', 50, 15, 0);
+      text-align: center;
+      color: #000;
+
+      h3 {
+         @include adaptiv-value('font-size', 46, 32, 0);
+         color: #4774FF;
+         @include adaptiv-value('margin-bottom', 20, 10, 0);
+         font-weight: 700;
+      }
+
+      input {
+         display: block;
+         border: none;
+         outline: none !important;
+         @include adaptiv-value('height', 40, 30, 0);
+         background: #4774FF;
+         @include adaptiv-value('padding-top', 30, 10, 0);
+         @include adaptiv-value('padding-right', 10, 5, 0);
+         @include adaptiv-value('padding-bottom', 30, 10, 0);
+         @include adaptiv-value('padding-left', 10, 5, 0);
+         @include adaptiv-value('margin-bottom', 20, 10, 0);
+         text-align: center;
+         font-family: 'Roboto', sans-serif;
+         @include adaptiv-value('font-size', 36, 18, 0);
+         color: #fff;
+
+         &::placeholder {
+            color: #A7BAFF;
+         }
+      }
+
+      .close-popup {
+         position: absolute;
+         top: 0;
+         right: 0;
+         transform: translateX(150%);
+         @include adaptiv-value('width', 35, 35, 0);
+         @include adaptiv-value('height', 35, 35, 0);
+
+         @include breakpoint(768px) {
+            transform: translate(0, -150%);
+
+         }
+      }
+   }
+
+   // .approve-deposit-popup-amount
+
+   &__amount {
+      @include adaptiv-value('font-size', 26, 20, 0);
+      @include adaptiv-value('margin-bottom', 15, 10, 0);
+   }
+
+   // .approve-deposit-popup-total-price
+
+   &__total-price {
+      span {
+         font-weight: bold;
+         @include adaptiv-value('font-size', 26, 18, 0);
+
+         &:first-child {
+            margin-right: 10px;
+         }
+      }
+   }
+
+   // .approve-deposit-popup-price-usd
+
+   &__price-usd {
+      @include adaptiv-value('font-size', 22, 16, 0);
+      text-align: end;
+      @include adaptiv-value('margin-bottom', 30, 15, 0);
+   }
+
+   // .approve-deposit-popup-bottom
+
+   &__bottom {
+      @include adaptiv-value('padding-top', 20, 10, 0);
+      border-top: 1px solid gray;
+      text-align: start;
+
+      h4 {
+         font-weight: 700;
+         @include adaptiv-value('font-size', 22, 16, 0);
+         @include adaptiv-value('margin-bottom', 10, 5, 0);
+
+      }
+
+      p {
+         @include adaptiv-value('font-size', 18, 14, 0);
+      }
+   }
+}
+
+
+.transaction-success-popup {
+   padding-left: 20px;
+   padding-right: 20px;
+
+   h3 {
+      @include adaptiv-value('font-size', 46, 32, 0);
+      color: #4774FF;
+      @include adaptiv-value('margin-bottom', 20, 10, 0);
+      font-weight: 700;
+   }
+
+   p {
+      @include adaptiv-value('font-size', 24, 18, 0);
+      @include adaptiv-value('margin-bottom', 20, 10, 0);
+   }
+
+   .close-popup {
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translateX(150%);
+      @include adaptiv-value('width', 35, 35, 0);
+      @include adaptiv-value('height', 35, 35, 0);
+
+      @include breakpoint(768px) {
+         transform: translate(0, -150%);
+      }
+   }
+
+   a {
+      @include adaptiv-value('font-size', 22, 16, 0);
+      color: #000;
+      text-decoration: underline;
+   }
+
+   button {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 50%);
+      @include adaptiv-value('width', 200, 140, 0);
+      @include adaptiv-value('height', 60, 50, 0);
+      background-image: url('./../images/play-now.png');
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      border: none;
+      cursor: pointer;
+   }
+
+   // .transaction-success-popup__container
+
+   &__container {
+      position: relative;
+      border: 5px solid #4774FF;
+      border-radius: 5px;
+      background: #fff;
+      @include adaptiv-value('padding-top', 30, 15, 0);
+      @include adaptiv-value('padding-right', 50, 15, 0);
+      @include adaptiv-value('padding-bottom', 50, 60, 0);
+      @include adaptiv-value('padding-left', 50, 15, 0);
+      text-align: center;
+      color: #000;
+   }
+
+   // .transaction-success-popup__img
+
+   &__img {
+      @include adaptiv-value('margin-bottom', 20, 10, 0);
+
+      img {
+         display: inline-block;
+         @include adaptiv-value('width', 150, 100, 0);
+         @include adaptiv-value('height', 150, 100, 0);
+      }
+   }
+
+}
+
+
+.add-funds-popup {
+   padding-left: 20px;
+   padding-right: 20px;
+
+   .close-popup {
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translateX(150%);
+      @include adaptiv-value('width', 35, 35, 0);
+      @include adaptiv-value('height', 35, 35, 0);
+
+      @include breakpoint(768px) {
+         transform: translate(0, -150%);
+      }
+   }
+
+   h3 {
+      @include adaptiv-value('font-size', 46, 32, 0);
+      color: #4774FF;
+      @include adaptiv-value('margin-bottom', 20, 10, 0);
+      font-weight: 700;
+   }
+
+   button {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 50%);
+      @include adaptiv-value('width', 270, 200, 0);
+      @include adaptiv-value('height', 100, 80, 0);
+      background: transparent;
+      background-image: url('./../images/Continue-Normal.png');
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      border: none;
+      transition: 0.2s;
+      cursor: pointer;
+
+      &:hover {
+         background-image: url('./../images/Continue-Hovered.png');
+      }
+   }
+
+   p {
+      @include adaptiv-value('font-size', 24, 16, 0);
+      @include adaptiv-value('margin-bottom', 40, 20, 0);
+
+   }
+
+   // .add-funds-popup__container
+
+   &__container {
+      max-width: 800px;
+      width: 100%;
+      position: relative;
+      border: 5px solid #4774FF;
+      border-radius: 5px;
+      background: #fff;
+      @include adaptiv-value('padding-top', 30, 15, 0);
+      @include adaptiv-value('padding-right', 50, 15, 0);
+      @include adaptiv-value('padding-bottom', 50, 40, 0);
+      @include adaptiv-value('padding-left', 50, 15, 0);
+      text-align: center;
+      color: #000;
+   }
+
+   // .add-funds-popup__need
+
+   &__need {
+      display: inline-block;
+      @include adaptiv-value('padding-top', 10, 5, 0);
+      @include adaptiv-value('padding-right', 20, 10, 0);
+      @include adaptiv-value('padding-bottom', 10, 5, 0);
+      @include adaptiv-value('padding-left', 20, 10, 0);
+      @include adaptiv-value('margin-bottom', 20, 10, 0);
+      @include adaptiv-value('font-size', 32, 16, 0);
+      font-weight: 700;
+      border: 5px solid #4774FF;
+      border-radius: 3px;
+
+      @include breakpoint(1440px) {
+         border: 4px solid #4774FF;
+      }
+
+      @include breakpoint(1024px) {
+         border: 3px solid #4774FF;
+      }
+
+      @include breakpoint(768px) {
+         border: 2px solid #4774FF;
+      }
+
+      span {
+         color: #4774FF;
+      }
+
+   }
+
+   // .lobby__private-add-funds-popup__wallet-balance
+
+   &__wallet-balance {
+      @include adaptiv-value('margin-bottom', 20, 10, 0);
+
+      span {
+         margin-right: 20px;
+         @include adaptiv-value('font-size', 22, 12, 0);
+         font-weight: 700;
+
+         &:last-child {
+            margin-right: 0px;
+         }
+      }
+   }
+
+   // .lobby__private-add-funds-popup__link
+
+   &__link {
+      @include adaptiv-value('padding-top', 15, 8, 0);
+      @include adaptiv-value('padding-bottom', 15, 8, 0);
+      @include adaptiv-value('margin-bottom', 20, 10, 0);
+      background-image: url('./../images/Blue-COPY-Link.png');
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+   }
+
+   // .lobby__private-add-funds-popup__link-container
+
+   &__link-container {
+      text-align: end;
+      @include adaptiv-value('font-size', 18, 12, 0);
+      color: #fff;
+      width: 90%;
+   }
+}
+
+.total-balance-popup {
+   padding-left: 20px;
+   padding-right: 20px;
+
+   .close-popup {
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translateX(150%);
+      @include adaptiv-value('width', 35, 35, 0);
+      @include adaptiv-value('height', 35, 35, 0);
+
+      @include breakpoint(768px) {
+         transform: translate(0, -150%);
+      }
+   }
+
+   h3 {
+      @include adaptiv-value('font-size', 46, 32, 0);
+      color: #4774FF;
+      @include adaptiv-value('margin-bottom', 20, 10, 0);
+      font-weight: 700;
+   }
+
+   button {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 50%);
+      @include adaptiv-value('width', 270, 200, 0);
+      @include adaptiv-value('height', 100, 80, 0);
+      background: transparent;
+      background-image: url('./../images/Withdraw-Normal.png');
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      border: none;
+      transition: 0.2s;
+      cursor: pointer;
+
+      &:hover {
+         background-image: url('./../images/Withdraw-Hovered.png');
+      }
+   }
+
+      // .total-balance-popup__container
+
+&__container {
+   max-width: 600px;
+   width: 100%;
+   position: relative;
+   border: 5px solid #4774FF;
+   border-radius: 5px;
+   background: #fff;
+   @include adaptiv-value('padding-top', 30, 15, 0);
+   @include adaptiv-value('padding-right', 50, 15, 0);
+   @include adaptiv-value('padding-bottom', 50, 40, 0);
+   @include adaptiv-value('padding-left', 50, 15, 0);
+   text-align: center;
+   color: #000;
+}
+
+// .total-balance-popup__need
+
+&__need {
+   display: inline-block;
+   padding-top: 5px;
+   @include adaptiv-value('padding-right', 30, 15, 0);
+   padding-bottom: 5px;
+   @include adaptiv-value('padding-left', 30, 15, 0);
+   @include adaptiv-value('margin-bottom', 20, 10, 0);
+   @include adaptiv-value('font-size', 46, 32, 0);
+   font-weight: 700;
+
+   border: 5px solid #4774FF;
+   border-radius: 3px;
+
+   @include breakpoint(1440px) {
+      border: 4px solid #4774FF;
+   }
+
+   @include breakpoint(1024px) {
+      border: 3px solid #4774FF;
+   }
+
+   @include breakpoint(768px) {
+      border: 2px solid #4774FF;
+   }
+
+}
+
+// .total-balance-popup__enter-amount
+
+&__enter-amount {
+   @include adaptiv-value('font-size', 24, 16, 0);
+   @include adaptiv-value('margin-bottom', 20, 10, 0);
+}
+
+// .total-balance-popup__enter-amount-input
+
+&__enter-amount-input {
+   display: block;
+   width: 100%;
+   border: none;
+   outline: none !important;
+   @include adaptiv-value('height', 40, 30, 0);
+   background: #4774FF;
+   @include adaptiv-value('padding-top', 30, 10, 0);
+   @include adaptiv-value('padding-right', 10, 5, 0);
+   @include adaptiv-value('padding-bottom', 30, 10, 0);
+   @include adaptiv-value('padding-left', 10, 5, 0);
+   @include adaptiv-value('margin-bottom', 20, 10, 0);
+   text-align: center;
+   font-family: 'Roboto', sans-serif;
+   @include adaptiv-value('font-size', 36, 18, 0);
+   color: #fff;
+
+   &::placeholder {
+      color: #A7BAFF;
+   }
+}
+
+// .total-balance-popup__total-price
+
+&__total-price {
+   span {
+      font-weight: bold;
+      @include adaptiv-value('font-size', 26, 18, 0);
+
+      &:first-child {
+         margin-right: 10px;
+      }
+   }
+}
+
+// .total-balance-popup__price-usd
+
+&__price-usd {
+   @include adaptiv-value('font-size', 22, 16, 0);
+   text-align: end;
+   @include adaptiv-value('margin-bottom', 30, 15, 0);
+}
+
+// .total-balance-popup__bottom
+
+&__bottom {
+   @include adaptiv-value('padding-top', 20, 10, 0);
+   border-top: 1px solid gray;
+   text-align: start;
+   @include adaptiv-value('margin-bottom', 10, 5, 0);
+
+
+
+   b {
+      @include adaptiv-value('font-size', 22, 16, 0);
+      font-weight: 700;
+   }
+
+   p {
+      @include adaptiv-value('font-size', 20, 14, 0);
+      @include adaptiv-value('margin-bottom', 20, 10, 0);
+
+      &:last-child {
+         margin-bottom: 0px;
+      }
+   }
+}
+
+// .total-balance-popup__different-wallet
+
+&__different-wallet {
+   display: block;
+   width: 100%;
+   border: none;
+   outline: none !important;
+   @include adaptiv-value('height', 40, 25, 0);
+   background: #C1C3CA;
+   @include adaptiv-value('padding-top', 20, 10, 0);
+   @include adaptiv-value('padding-right', 10, 5, 0);
+   @include adaptiv-value('padding-bottom', 20, 10, 0);
+   @include adaptiv-value('padding-left', 10, 5, 0);
+   @include adaptiv-value('margin-bottom', 20, 10, 0);
+   text-align: center;
+   font-family: 'Roboto', sans-serif;
+   @include adaptiv-value('font-size', 22, 16, 0);
+   color: #000;
+
+   &::placeholder {
+      color: #D9DADE;
+   }
+}
+}
+
+.are-you-ready-popup {
+   padding-left: 20px;
+   padding-right: 20px;
+
+   h2 {
+      @include adaptiv-value('font-size', 130, 70, 0);
+      @include adaptiv-value('margin-bottom', 20, 10, 0);
+
+      span {
+         display: block;
+
+         &:nth-child(2) {
+            @include adaptiv-value('font-size', 76, 46, 0);
+
+         }
+      }
+   }
+
+   button {
+      @include adaptiv-value('width', 500, 240, 0);
+      @include adaptiv-value('height', 80, 50, 0);
+      background: transparent;
+      background-image: url('./../images/BlankButton-Normal.png');
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      border: none;
+      font-family: 'Roboto', sans-serif;
+      @include adaptiv-value('font-size', 42, 22, 0);
+      text-transform: uppercase;
+      font-weight: 700;
+      transition: 0.2s;
+      cursor: pointer;
+
+      &:hover {
+         background-image: url('./../images/BlankButton-Hovered.png');
+      }
+   }
+
+   // .are-you-ready-popup__container
+
+   &__container {}
+}
+
+
+  // .soc
+
+  .soc {
+
+   li {
+
+      &:nth-child(1){
+         a{
+            background-image: url('./../images/Twitter-normal.png');
+
+            @include breakpoint(768px) {
+               background-image: url('./../images/Twitter-hovered.png');
+             }
+
+             &:hover {
+               background-image: url('./../images/Twitter-hovered.png');
+             }
+         }
+      }
+      &:nth-child(2){
+         a{
+            background-image: url('./../images/IG-normal.png');
+
+            @include breakpoint(768px) {
+               background-image: url('./../images/IG-hovered.png');
+             }
+
+             &:hover {
+               background-image: url('./../images/IG-hovered.png');
+             }
+         }
+      }
+      &:nth-child(3){
+         a{
+            background-image: url('./../images/Telegram-normal.png');
+
+            @include breakpoint(768px) {
+               background-image: url('./../images/Telegram-hovered.png');
+             }
+
+             &:hover {
+               background-image: url('./../images/Telegram-hovered.png');
+             }
+         }
+      }
+      &:nth-child(4){
+         a{
+            background-image: url('./../images/TikTok-normal.png');
+
+            @include breakpoint(768px) {
+               background-image: url('./../images/TikTok-hovered.png');
+             }
+
+             &:hover {
+               background-image: url('./../images/TikTok-hovered.png');
+             }
+         }
+      }
+
+     &:last-child {
+       margin-bottom: 0px;
+     }
+   }
+
+   a {
+     display: inline-block;
+     background-repeat: no-repeat;
+     background-size: 100% 100%;
+     @include adaptiv-value('width', 30, 20, 0);
+     @include adaptiv-value('height', 30, 20, 0);
+     transition: 0.2s;
+   }
+ }
