@@ -3,7 +3,7 @@ import { fetchUsers } from './ActionCreators';
 import { ProfileState } from './Interfaces';
 
 const initialState: ProfileState = {
-  walletAddress: null,
+  walletAddress: '0x8243E8a9293C266A248e684031480fDaC84e4e12',
   balanceETH: 0,
   balanceUSD: 0,
   isLoading: false,
@@ -21,7 +21,6 @@ export const profileSlice = createSlice({
   }, // аналогично конструкции switch case
   extraReducers: {
     [fetchUsers.fulfilled.type]: (state, action: PayloadAction<any>) => {
-      console.log(action);
       state.isLoading = false;
       state.error = '';
       // state.users = action.payload;

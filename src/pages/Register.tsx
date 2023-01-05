@@ -10,7 +10,7 @@ import { Link, redirect } from 'react-router-dom';
 import { ethers } from 'ethers';
 import { profileSlice } from '../store/reducers/profileReducer';
 import { authSlice } from '../store/reducers/authReducer';
-import { useAppDispatch, useGetPriceOfCurrency, useWeb3Helper } from '../hooks/hooks';
+import { useAppDispatch } from '../hooks/hooks';
 
 declare global {
   interface Window {
@@ -24,22 +24,6 @@ const Register = () => {
   const { setWalletAddress } = profileSlice.actions;
   const { setIsAuth } = authSlice.actions;
 
-  const { connectWalletProvider } = useWeb3Helper();
-
-  const connectWallet = async () => {
-    if (window.ethereum) {
-      try {
-        const account = await connectWalletProvider.send('eth_requestAccounts', []);
-        dispatch(setWalletAddress(account[0]));
-        dispatch(setIsAuth(true));
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      console.log('did not detected');
-    }
-  };
-
   return (
     <>
       <section className="registration">
@@ -48,7 +32,7 @@ const Register = () => {
             <div className="registration__contentImg">
               <img src={logo} alt="logo" />
             </div>
-            <button className="button" onClick={connectWallet} />
+            <button className="button" />
             <p className="d-f ai-c online">
               Users Online:<b>X,XXX</b>
             </p>

@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import { Outlet, useOutletContext } from 'react-router-dom';
-import { useOutside } from '../hooks/hooks';
+import { useAppSelector, useOutside } from '../hooks/hooks';
 import Header from './Header';
 import Navbar from './Navbar';
 import transactionSuccessful from './../assets/images/transaction-successful.png';
 import arrowLeft from './../assets/images/Arrow-.png';
+import { ethers } from 'ethers';
 
 const Layout2 = () => {
   const [
@@ -96,10 +97,10 @@ const Layout2 = () => {
           <input type="text" placeholder="Enter Amount in ETH" />
           <p className="deposit-funds-popup__total-price d-f jc-sb ai-c">
             <span>Total price</span>
-            <span>0.0 ETH</span>
+            <span>11 ETH</span>
           </p>
-          <p className="deposit-funds-popup__price-usd">$0,000</p>
-          <button onClick={delete1}></button>
+          <p className="deposit-funds-popup__price-usd">11</p>
+          <button></button>
         </div>
       </div>
 
@@ -111,12 +112,12 @@ const Layout2 = () => {
           <div className="close-popup" onClick={() => toggleApproveDepositPopup(false)}></div>
           <h3>Approve deposit</h3>
           <p className="approve-deposit-popup__amount">Amount deposited</p>
-          <input type="text" value={'3.7 ETH'} />
+          <input type="text" value={`11 ETH`} />
           <p className="approve-deposit-popup__total-price d-f jc-sb ai-c">
             <span>Total price</span>
-            <span>0.0 ETH</span>
+            <span> ETH</span>
           </p>
-          <p className="approve-deposit-popup__price-usd">$0,000</p>
+          <p className="approve-deposit-popup__price-usd"> 11</p>
           <div className="approve-deposit-popup__bottom">
             <h4>Go to your wallet</h4>
             <p>Approved this purchase from your wallet</p>
@@ -131,7 +132,7 @@ const Layout2 = () => {
         <div className="transaction-success-popup__container" ref={refTransactionSuccess}>
           <div className="close-popup" onClick={() => toggleTransactionSuccessPopup(false)}></div>
           <h3>Transaction Successful</h3>
-          <p>You deposited 3.7 eth</p>
+          <p>You deposited eth</p>
           <div className="transaction-success-popup__img">
             <img src={transactionSuccessful} alt="transaction success" />
           </div>
@@ -169,7 +170,7 @@ const Layout2 = () => {
         <div className="total-balance-popup__container" ref={refTotalBalance}>
           <div className="close-popup" onClick={() => toggleTotalBalancePopup(false)}></div>
           <h3>Total Balance</h3>
-          <div className="total-balance-popup__need">7.4 ETH</div>
+          <div className="total-balance-popup__need"> ETH</div>
           <p className="total-balance-popup__enter-amount">Enter the amount you want to withdraw</p>
           <input
             className="total-balance-popup__enter-amount-input"
@@ -178,9 +179,9 @@ const Layout2 = () => {
           />
           <p className="total-balance-popup__total-price d-f jc-sb ai-c">
             <span>Total price</span>
-            <span>0.0 ETH</span>
+            <span> ETH</span>
           </p>
-          <p className="total-balance-popup__price-usd">$0,000</p>
+          <p className="total-balance-popup__price-usd"></p>
           <div className="total-balance-popup__bottom">
             <p>The amount will be withdraw to your account of MetaMask connected</p>
             <p>

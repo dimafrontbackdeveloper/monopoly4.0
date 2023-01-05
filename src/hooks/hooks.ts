@@ -130,29 +130,10 @@ export function useWindowSize() {
   return size;
 }
 
-export function useWeb3Helper() {
-  const REACT_APP_PRODUCTION_ADDRESS = 'https://mainnet.infura.io/v3/';
-  const REACT_APP_DEV_ADDRESS = 'https://goerli.infura.io/v3/';
-  const privateKey = 'ebe447548842d90e012bccc16d7d552c09c8e62c0dd55f01902281a63a6cbd51';
-  const sender = '0x8243E8a9293C266A248e684031480fDaC84e4e12'; // sender
-  const INFURA_ID = '4436868d4ff54ee08895fde591e51522';
-  const httpProvider = new ethers.providers.JsonRpcProvider(`${REACT_APP_DEV_ADDRESS}${INFURA_ID}`);
-  const connectWalletProvider = new ethers.providers.Web3Provider(window.ethereum);
-  const wallet = new ethers.Wallet(privateKey, httpProvider);
+// export async function useGetPriceOfCurrency(from = 'ETH', to = 'USD') {
+//   const responce = await axios(
+//     `https://min-api.cryptocompare.com/data/price?fsym=${from}&tsyms=${to}`,
+//   );
 
-  return {
-    sender,
-    privateKey,
-    wallet,
-    httpProvider,
-    connectWalletProvider,
-  };
-}
-
-export async function useGetPriceOfCurrency(from = 'ETH', to = 'USD') {
-  const responce = await axios(
-    `https://min-api.cryptocompare.com/data/price?fsym=${from}&tsyms=${to}`,
-  );
-
-  return responce.data;
-}
+//   return responce.data;
+// }

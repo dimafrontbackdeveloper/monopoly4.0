@@ -1,10 +1,12 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import authReducer from './reducers/authReducer';
 import profileReducer from './reducers/profileReducer';
+import currencysReducer from './reducers/currencysReducer';
 
 const rootReducer = combineReducers({
   profileReducer,
   authReducer,
+  currencysReducer,
 });
 
 export const setupStore = () => {
